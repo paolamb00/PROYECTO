@@ -2,7 +2,9 @@ const PRODUCT_CART = "https://japceibal.github.io/emercado-api/user_cart/25801.j
 let cart_list = "";
 
 
-
+function showCart(){
+    
+}
 
 
 
