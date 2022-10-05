@@ -8,12 +8,21 @@ let prodSub = document.getElementById("subProduct");
 
 function showCart(cart_data){
     for(let i = 0; i < cart_data.length; i++){
+       prodImg.innerHTML += `<img src="${cart_data[i].image}">`
        prodNam.textContent += `${cart_data[i].name}`
        prodCost.innerHTML += `${cart_data[i].currency} ${cart_data[i].unitCost}` 
-       prodCant.innerHTML += `${cart_data[i].count}`
+       prodCant.value = `${cart_data[i].count}`
     }
 };
 
+function subTot(cart_total){
+    for(let i=0; i< cart_total.length;i++){
+      let subTotal = `${cart_total[i].unitCost}` * prodCant.value;
+      prodSub.value = subTotal;
+      prodSub.innerHTML += `${cart_total[i].currency} ` + subTotal;
+      console.log(prodSub.value)
+    }   
+};
 
 
 document.addEventListener("DOMContentLoaded", function(e){
@@ -22,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             cart_list = resultObj.data.articles
             console.log(cart_list)
             showCart(cart_list)
+            subTot(cart_list)
             
         }
     })
