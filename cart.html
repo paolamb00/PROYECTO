@@ -41,6 +41,7 @@
         <h4>Carrito de compras</h4>
 
       </div>
+      <h5>Artículos a comprar</h5>
       <table class="table">
         <thead>
           <tr>
@@ -60,6 +61,47 @@
           </tr>
         </tbody>
       </table>
+      <h5>Tipo de envío</h5>
+      <div class="d-block my-3">
+        <div class="custom-control custom-radio">
+          <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" checked=""
+            required="">
+          <label class="custom-control-label" for="premiumradio">Premium 2 a 5 días (15%)</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" required="">
+          <label class="custom-control-label" for="expressumradio">Express 5 a 8 días (7%)</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
+          <label class="custom-control-label" for="standardradio">Standard 12 a 15 días (5%)</label>
+        </div>
+      </div>
+      
+      <h5>Dirección de envío</h5>
+      <div class="row">
+        <div class="col-md-3 mb-3">
+          <label for="calleEnvioInput">Calle</label>
+          <input type="text" name="calleEnvioInput" class="form-control" id="calleEnvioInput" placeholder="" required="" value="">
+          <div class="invalid-feedback">
+            Ingrese una dirección existente.
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="numeroEnvioInput">Número</label>
+          <input type="number" name="numeroEnvioInput" class="form-control" id="numeroEnvioInput" placeholder="" required="" value="">
+          <div class="invalid-feedback">
+            Ingresa un número válido.
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 mb-3">
+            <label for="esquinaEnvioInput">Esquina</label>
+            <input type="text" name="esquinaEnvioInput" class="form-control" id="esquinaEnvioInput" placeholder="" required="" value="">
+            <div class="invalid-feedback">
+              Ingrese una dirección existente.
+            </div>
+      </div>
     </div>
   </main>
   <footer class="text-muted">
