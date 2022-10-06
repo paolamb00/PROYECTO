@@ -5,6 +5,10 @@ let prodNam = document.getElementById("nameProduct");
 let prodCost = document.getElementById("costProduct");
 let prodCant = document.getElementById("cantProd");
 let prodSub = document.getElementById("subProduct");
+const CARRITO_DATA = "https://japceibal.github.io/emercado-api/user_cart/";
+let carrito_prod = CARRITO_DATA + localStorage.getItem("product") + ".json";
+
+
 
 
 function showCart(cart_data){
@@ -13,14 +17,15 @@ function showCart(cart_data){
        prodNam.textContent += `${cart_data[i].name}`
        prodCost.innerHTML += `${cart_data[i].currency} ${cart_data[i].unitCost}` 
        prodCant.value = `${cart_data[i].count}`
+       
     }
 };
 
 //SUBTOTAL (INCOMPLETO)
 function subTot(cart_total){
     for(let i=0; i< cart_total.length;i++){
-    let cantidad = prodCant.value;
-      let subTotal = `${cart_total[i].unitCost}` * cantidad;
+     var prodCantidad = document.getElementById("cantProd");
+     const subTotal = `${cart_total[i].unitCost}` * prodCantidad.value; 
       prodSub.innerHTML += `${cart_total[i].currency} ` + subTotal;
       console.log(subTotal)
     }   
