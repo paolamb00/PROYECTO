@@ -11,7 +11,13 @@ function showProductInfo(inf_list){
     let htmlContentToAppend ="";
         htmlContentToAppend += `
         <div class="information">
-        <h1>`+inf_list.name+`</h1>
+        <div>
+        <br>
+        <h1>`+inf_list.name+`</h1> 
+        <button type="button" class="button" style="float: right;">Comprar</button>
+        </div>
+        <br>
+        <div>
         <hr>
         <h4>Precio:</h4>
         <p>`+inf_list.currency+` `+inf_list.cost+`</p>
@@ -21,6 +27,8 @@ function showProductInfo(inf_list){
         <p>`+inf_list.category+`</p>
         <h4>Cantidad de vendidos:</h4>
         <p>`+inf_list.soldCount+`</p>
+        </div>
+        
         `
      document.getElementById("infoProd").innerHTML = htmlContentToAppend;
    }

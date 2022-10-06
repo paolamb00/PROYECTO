@@ -6,6 +6,7 @@ let prodCost = document.getElementById("costProduct");
 let prodCant = document.getElementById("cantProd");
 let prodSub = document.getElementById("subProduct");
 
+
 function showCart(cart_data){
     for(let i = 0; i < cart_data.length; i++){
        prodImg.innerHTML += `<img src="${cart_data[i].image}">`
@@ -15,6 +16,7 @@ function showCart(cart_data){
     }
 };
 
+//SUBTOTAL (INCOMPLETO)
 function subTot(cart_total){
     for(let i=0; i< cart_total.length;i++){
     let cantidad = prodCant.value;
@@ -23,6 +25,10 @@ function subTot(cart_total){
       console.log(subTotal)
     }   
 };
+
+//DESAFIATE
+
+
 
 
 document.addEventListener("DOMContentLoaded", function(e){
