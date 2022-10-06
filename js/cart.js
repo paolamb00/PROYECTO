@@ -17,10 +17,10 @@ function showCart(cart_data){
 
 function subTot(cart_total){
     for(let i=0; i< cart_total.length;i++){
-      let subTotal = `${cart_total[i].unitCost}` * prodCant.value;
-      prodSub.value = subTotal;
+    let cantidad = prodCant.value;
+      let subTotal = `${cart_total[i].unitCost}` * cantidad;
       prodSub.innerHTML += `${cart_total[i].currency} ` + subTotal;
-      console.log(prodSub.value)
+      console.log(subTotal)
     }   
 };
 
