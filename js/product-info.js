@@ -11,13 +11,13 @@ function showProductInfo(inf_list){
     let htmlContentToAppend ="";
         htmlContentToAppend += `
         <div class="information">
-        <div>
+        <div class="prTitle">
         <br>
         <h1>`+inf_list.name+`</h1> 
         <button type="button" class="button" style="float: right;">Comprar</button>
         </div>
         <br>
-        <div>
+        <div class="prData">
         <hr>
         <h4>Precio:</h4>
         <p>`+inf_list.currency+` `+inf_list.cost+`</p>
