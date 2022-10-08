@@ -14,7 +14,6 @@ function showProductInfo(inf_list){
         <div class="prTitle">
         <br>
         <h1>`+inf_list.name+`</h1> 
-        <button type="button" class="button" style="float: right;">Comprar</button>
         </div>
         <br>
         <div class="prData">
@@ -116,7 +115,6 @@ document.getElementById("btnComment").addEventListener('click', function(){
     </div>
     `    
 });
-
 
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(product_info).then(function(resultObj){
