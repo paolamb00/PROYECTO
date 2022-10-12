@@ -5,7 +5,6 @@ let prodNam = document.getElementById("nameProduct");
 let prodCost = document.getElementById("costProduct");
 let prodCant = document.getElementById("cantProd");
 let prodSub = document.getElementById("subProduct");
-let DOLLAR_SIGN = "USD";
 const CARRITO_DATA = "https://japceibal.github.io/emercado-api/user_cart/";
 let carrito_prod = CARRITO_DATA + localStorage.getItem("product") + ".json";
 let prod_cart = "";
@@ -19,22 +18,20 @@ function showCart(cart_data){
        prodNam.textContent += `${cart_data[i].name}`
        prodCost.innerHTML += `${cart_data[i].currency} ${cart_data[i].unitCost}` 
        prodCant.value = `${cart_data[i].count}`
-       let subPrice = `${cart_data[i].unitCost}` * prodCant.value;
-       prodSub.innerHTML = `${cart_data[i].currency}` + subPrice
        
     }
 };
 
 // CALCULAR SUBTOTAL EN TIEMPO REAL
-function upgradeSub(){
-   let unitPrice = document.getElementById("costProduct").value;
-   let amount = document.getElementById("cantProd").value;
-   let subTot = unitPrice * amount;
-    prodSub.innerHTML = subTot;
+function upgradeSub(cart){
+    for(let i =0; i < cart.length;i++){
+      let subTot = `${cart[i].unitCost}` * prodCant.value;
+      prodSub.innerHTML += `${cart[i].currency} ` + subTot;  
+    }
 };
 
-document.getElementById("cantProd").addEventListener("change", function(){
-    upgradeSub();
+prodCant.addEventListener('click', function(){
+    upgradeSub(cart_list)
 });
 
 //DESAFIATE
@@ -52,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             cart_list = resultObj.data.articles
             console.log(cart_list)
             showCart(cart_list)
+            upgradeSub(cart_list)
         }
     })
 });
@@ -65,5 +63,3 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     })
 });
-
-upgradeSub();
