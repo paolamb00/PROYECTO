@@ -14,19 +14,20 @@ let prod_cart = "";
 
 function showCart(cart_data){
     for(let i = 0; i < cart_data.length; i++){
-       prodImg.innerHTML += `<img src="${cart_data[i].image}">`
-       prodNam.textContent += `${cart_data[i].name}`
-       prodCost.innerHTML += `${cart_data[i].currency} ${cart_data[i].unitCost}` 
-       prodCant.value = `${cart_data[i].count}`
+        prodImg.innerHTML += `<img src="${cart_data[i].image}">`
+        prodNam.textContent += `${cart_data[i].name}`
+        prodCost.innerHTML += `${cart_data[i].currency} ${cart_data[i].unitCost}` 
+        prodCant.value = `${cart_data[i].count}`
        
     }
+    
 };
 
 // CALCULAR SUBTOTAL EN TIEMPO REAL
 function upgradeSub(cart){
     for(let i =0; i < cart.length;i++){
       let subTot = `${cart[i].unitCost}` * prodCant.value;
-      prodSub.innerHTML += `${cart[i].currency} ` + subTot;  
+      prodSub.innerHTML = `${cart[i].currency} ` + subTot;  
     }
 };
 
@@ -35,11 +36,6 @@ prodCant.addEventListener('click', function(){
 });
 
 //DESAFIATE
-
-
-
-
-
 
 
 

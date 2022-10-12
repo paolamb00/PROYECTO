@@ -38,8 +38,7 @@ function productImg(){
     let htmlContentToAppend = "";
     for(let i = 0; i < info_list.images.length; i++){
      htmlContentToAppend += `   
-         <img src="`+info_list.images[i]+`">     
-                       
+         <img src="`+info_list.images[i]+`">                      
     `
   }
       document.getElementById("imgProd").innerHTML = htmlContentToAppend
@@ -114,6 +113,11 @@ document.getElementById("btnComment").addEventListener('click', function(){
     </ul>
     </div>
     `    
+});
+
+//REDIRIGIR A CARRITO DE COMPRAS
+document.getElementById("carritoID").addEventListener('click', function(){
+    window.location = "cart.html"
 });
 
 document.addEventListener("DOMContentLoaded", function(e){
