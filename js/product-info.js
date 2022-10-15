@@ -18,6 +18,9 @@ function showProductInfo(inf_list){
         <br>
         <div class="prData">
         <hr>
+        <p id="volver">
+        <a href="products.html">Volver al listado</a>
+        </p>
         <h4>Precio:</h4>
         <p>`+inf_list.currency+` `+inf_list.cost+`</p>
         <h4>Descripción:</h4>

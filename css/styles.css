@@ -292,3 +292,7 @@ width: 200px;
 #subProduct{
   font-weight: bold;
 }
+
+#volver{
+  float: right;
+}
