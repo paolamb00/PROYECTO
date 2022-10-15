@@ -275,7 +275,7 @@ width: 200px;
 }
 
 .button {
-  background-color: #4CAF50; 
+  background-color: #21965f; 
   border: none;
   color: white;
   padding: 10px 22px;
@@ -295,4 +295,9 @@ width: 200px;
 
 #volver{
   float: right;
+}
+
+#carritoID{
+  margin-top: 25px;
+  border-radius: 5px;
 }
