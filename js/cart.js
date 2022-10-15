@@ -5,9 +5,6 @@ let prodNam = document.getElementById("nameProduct");
 let prodCost = document.getElementById("costProduct");
 let prodCant = document.getElementById("cantProd");
 let prodSub = document.getElementById("subProduct");
-const CARRITO_DATA = "https://japceibal.github.io/emercado-api/user_cart/";
-let carrito_prod = CARRITO_DATA + localStorage.getItem("product") + ".json";
-let prod_cart = "";
 
 
 
@@ -35,7 +32,6 @@ prodCant.addEventListener('click', function(){
     upgradeSub(cart_list)
 });
 
-//DESAFIATE
 
 
 
@@ -50,12 +46,3 @@ document.addEventListener("DOMContentLoaded", function(e){
     })
 });
 
-document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(carrito_prod).then(function(resultObj){
-        if (resultObj.status === "ok"){
-            prod_cart = resultObj.data.articles
-            console.log(prod_cart)
-            
-        }
-    })
-});

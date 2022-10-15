@@ -116,9 +116,17 @@ document.getElementById("btnComment").addEventListener('click', function(){
 });
 
 //REDIRIGIR A CARRITO DE COMPRAS
-document.getElementById("carritoID").addEventListener('click', function(){
-    window.location = "cart.html"
+document.getElementById("carritoID").addEventListener('click', function(e){
+     if(localStorage.getItem("addToCart")){
+      let cartList = JSON.parse(localStorage.getItem("addToCart"));
+      cartList.push(product_info);
+      localStorage.setItem("addToCart", JSON.stringify(cartList));
+    }else{
+    localStorage.setItem("addToCart", JSON.stringify([product_info]))
+}
+    window.location = "cart.html";
 });
+        
 
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(product_info).then(function(resultObj){
