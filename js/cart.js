@@ -8,7 +8,7 @@ let prodSub = document.getElementById("subProduct");
 
 
 
-
+//FUNCIÓN PARA MOSTRAR PRODUCTO ORIGINAL
 function showCart(cart_data){
     for(let i = 0; i < cart_data.length; i++){
         prodImg.innerHTML += `<img src="${cart_data[i].image}">`
@@ -28,11 +28,26 @@ function upgradeSub(cart){
     }
 };
 
+
 prodCant.addEventListener('click', function(){
     upgradeSub(cart_list)
 });
 
 
+//FUNCIÓN PARA MOSTRAR PRODUCTOS QUE SE AGREGAN(en desarrollo)
+// function addToCart(new_product){
+//    let htmlContentToAppend ="";
+//    for(let i = 0; i < new_product.length; i++){
+//    htmlContentToAppend+=`
+//      <td><img src="${new_product[i].images[0]}"></td>
+//      <td>${new_product[i].name}</td>
+//      <td>${new_product[i].currency} ${new_product[i].cost}</td>
+//      <td></td>
+//      <td>${new_product[i].currency} ${new_product[i].cost}</td>
+//        `
+//    }
+//    document.getElementById("tableCart").innerHTML += htmlContentToAppend;
+//  }
 
 
 document.addEventListener("DOMContentLoaded", function(e){
@@ -43,6 +58,10 @@ document.addEventListener("DOMContentLoaded", function(e){
             showCart(cart_list)
             upgradeSub(cart_list)
         }
+        // const saveInfo = JSON.parse(localStorage.getItem("addToCart"))
+        // console.log(saveInfo)
+        // addToCart(saveInfo)
     })
 });
+
 

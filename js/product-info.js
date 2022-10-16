@@ -122,10 +122,10 @@ document.getElementById("btnComment").addEventListener('click', function(){
 document.getElementById("carritoID").addEventListener('click', function(e){
      if(localStorage.getItem("addToCart")){
       let cartList = JSON.parse(localStorage.getItem("addToCart"));
-      cartList.push(product_info);
+      cartList.push(info_list);
       localStorage.setItem("addToCart", JSON.stringify(cartList));
     }else{
-    localStorage.setItem("addToCart", JSON.stringify([product_info]))
+    localStorage.setItem("addToCart", JSON.stringify([info_list]))
 }
     window.location = "cart.html";
 });
