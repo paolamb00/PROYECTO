@@ -301,3 +301,22 @@ width: 200px;
   margin-top: 25px;
   border-radius: 5px;
 }
+
+#trashCan{
+  background-color: white;
+  border-color: red;
+  border-radius: 5px;
+}
+
+#prTh{
+  width: 70px;
+}
+
+#cart{
+  max-width: 1000px;
+  text-align: center;
+}
+
+#btnModal{
+  width: fit-content;
+}
