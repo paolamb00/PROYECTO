@@ -7,8 +7,14 @@
 // let prodSub = document.getElementById("subProduct");
 let cantPr = 1;
 let subtotalProducts = [];
-let subtotalValue = 0;
+let subTotalValue = 0;
 let totalValue = 0;
+let deliveryValue = 0;
+let premium = document.getElementById("premiumradio");
+let express = document.getElementById("expressradio");
+let standard = document.getElementById("standardradio")
+
+
 
 
 // //FUNCIÓN PARA MOSTRAR PRODUCTO ORIGINAL
@@ -51,21 +57,23 @@ let totalValue = 0;
 //CARRITO DE COMPRAS (+- NO APARECE LA MONEDA EN EL SUBTOTAL CUANDO SE ACTUALIZA EL INPUT)
 function cartPrNew(new_product){
     let htmlContentToAppend ="";
-    for(let i= 0; i<new_product.length;i++){
+    for(let i= 0; i < new_product.length;i++){
+        const { name, currency, cost } = new_product[i];
+        let productValue = cost;
         htmlContentToAppend+=`
     <tr">
       <td><img src="${new_product[i].images[0]}" id="prTh"></td>
-      <td>${new_product[i].name}</td>
-      <td>${new_product[i].currency} ${new_product[i].cost}</td>
-      <td><input type="number" id="cantidad${i}" onchange="updateSubtotal(${new_product[i].cost}, ${i})" class="form-control" value="1" min="1" max="100" step="1" style="width: 4em;" required></td>
-      <td id="subtotalItem${i}">${new_product[i].currency} ${(cantPr * new_product[i].cost)} </td>
+      <td>`+ name + `</td>
+      <td>`+ currency + ` `+ productValue + `</td>
+      <td><input type="number" id="cantidad${i}" onchange="updateSubtotal(`+ productValue + `, ${i})" class="form-control" value="1" min="1" style="width: 4em;" required></td>
+      <td id="subtotalItem${i}">`+ currency + ` `+(cantPr * productValue)+` </td>
       <td>
       <button type="button" id="trashCan"><i class="bi-trash" style="color:red"></i></button></td>
     </tr>
     `
     }
     document.getElementById("cartB").innerHTML = htmlContentToAppend;
-    updateSubtotal(cost, index);
+    updateSubtotal(productValue, index);
 };
 
 //SUBTOTAL 
@@ -76,17 +84,29 @@ function updateSubtotal(cost, i){ //como parámetros el precio y el índice del 
             let subtotalItem = cost * cantPr; //el subtotal es precio * cantidad
             subtotalProducts[i] = subtotalItem; //el subtotal de un producto se agrega al array que contiene todos los subtotales
             subtotalProducts.forEach(subPr =>{
-                subtotalValue += subPr //cada subtotal se suma al subtotal general de los productos
+                subTotalValue += subPr //cada subtotal se suma al subtotal general de los productos
             });
-            document.getElementById("subtotalItem" + i).innerHTML =  subtotalItem; //se muestra el subtotal de cada producto(falta mostrar la moneda)
+            document.getElementById("subtotalItem" + i).innerHTML = subtotalItem; //se muestra el subtotal de cada producto(falta mostrar la moneda)
         }  
-        document.getElementById("productCostText").innerHTML = subtotalValue; //se muestra el subtotal de todos los productos
+        document.getElementById("productCostText").innerHTML = subTotalValue; //se muestra el subtotal de todos los productos
+        updateTotal();
 };  
 
-//TOTAL
+//TOTAL EN BASE A SUBTOTAL Y FORMA DE ENVÍO
 function updateTotal(){
-    
-}
+    if(premium.checked){
+        deliveryValue = subTotalValue * 0.15;
+    }
+    if(standard.checked){
+        deliveryValue = subTotalValue * 0.05;
+    }
+    if(express.checked){
+        deliveryValue = subTotalValue * 0.07;
+    }
+    totalValue = deliveryValue + subTotalValue;
+    document.getElementById("comissionText").innerHTML = deliveryValue;
+    document.getElementById("totalCostText").innerHTML = totalValue;
+};
 
 //FUNCIÓN PARA VALIDAR FORMULARIO
 (function () {
@@ -107,7 +127,7 @@ function updateTotal(){
       })
   })()
 
-  // CHECKBOX DISABLED (FALTA QUE SEA MÁS DINÁMICO)
+//CHECKBOX DISABLED
 function check(){
     if(document.getElementById("cardRadio").checked){ //si se selecciona tarjeta se desactiva la opción para ingresar una cuenta bancaria
         document.getElementById("bankAccount").disabled = true;
