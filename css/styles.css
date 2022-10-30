@@ -320,3 +320,12 @@ width: 200px;
 #btnModal{
   width: fit-content;
 }
+
+#paymentType{
+  border-color: white;
+  max-width: fit-content;
+  background-color: white;
+}
+ #bankAccount{
+  width: 200px;
+ }

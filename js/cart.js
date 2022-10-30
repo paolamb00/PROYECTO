@@ -12,7 +12,13 @@ let totalValue = 0;
 let deliveryValue = 0;
 let premium = document.getElementById("premiumradio");
 let express = document.getElementById("expressradio");
-let standard = document.getElementById("standardradio")
+let standard = document.getElementById("standardradio");
+let cardNumber = document.getElementById("cardN");
+let cardSecurity = document.getElementById("cardSec");
+let cardDate = document.getElementById("cardDate");
+let saveData = document.getElementById("btnModal");
+let dolarPrice = 41;
+
 
 
 
@@ -66,7 +72,7 @@ function cartPrNew(new_product){
       <td>`+ name + `</td>
       <td>`+ currency + ` `+ productValue + `</td>
       <td><input type="number" id="cantidad${i}" onchange="updateSubtotal(`+ productValue + `, ${i})" class="form-control" value="1" min="1" style="width: 4em;" required></td>
-      <td id="subtotalItem${i}">`+ currency + ` `+(cantPr * productValue)+` </td>
+      <td id="subtotalItem${i}"><b>`+ currency + ` `+(cantPr * productValue)+` </td>
       <td>
       <button type="button" id="trashCan"><i class="bi-trash" style="color:red"></i></button></td>
     </tr>
@@ -74,6 +80,7 @@ function cartPrNew(new_product){
     }
     document.getElementById("cartB").innerHTML = htmlContentToAppend;
     updateSubtotal(productValue, index);
+    updateTotal();
 };
 
 //SUBTOTAL 
@@ -88,13 +95,14 @@ function updateSubtotal(cost, i){ //como parámetros el precio y el índice del 
             });
             document.getElementById("subtotalItem" + i).innerHTML = subtotalItem; //se muestra el subtotal de cada producto(falta mostrar la moneda)
         }  
-        document.getElementById("productCostText").innerHTML = subTotalValue; //se muestra el subtotal de todos los productos
+        document.getElementById("productCostText").innerHTML = Math.round(subTotalValue); //se muestra el subtotal de todos los productos
         updateTotal();
 };  
 
+
 //TOTAL EN BASE A SUBTOTAL Y FORMA DE ENVÍO
 function updateTotal(){
-    if(premium.checked){
+    if(premium.checked){ //se fija que radio (tipo de envío) está seleccionado y en base a ello calcula un porcentaje sobre el subtotal
         deliveryValue = subTotalValue * 0.15;
     }
     if(standard.checked){
@@ -103,9 +111,9 @@ function updateTotal(){
     if(express.checked){
         deliveryValue = subTotalValue * 0.07;
     }
-    totalValue = deliveryValue + subTotalValue;
-    document.getElementById("comissionText").innerHTML = deliveryValue;
-    document.getElementById("totalCostText").innerHTML = totalValue;
+    totalValue = Math.round(deliveryValue) + Math.round(subTotalValue); //el total se modifica en base al subtotal y el envío
+    document.getElementById("comissionText").innerHTML =  Math.round(deliveryValue);
+    document.getElementById("totalCostText").innerHTML =  Math.round(totalValue);
 };
 
 //FUNCIÓN PARA VALIDAR FORMULARIO
@@ -120,6 +128,7 @@ function updateTotal(){
           if (!form.checkValidity()) {
             event.preventDefault()
             event.stopPropagation()
+            
           }
   
           form.classList.add('was-validated')
@@ -138,18 +147,34 @@ function check(){
         document.getElementById("cardN").disabled = true;
         document.getElementById("cardSec").disabled = true;
         document.getElementById("cardDate").disabled = true;
+        document.getElementById("paymentType").value = "Transferencia bancaria"
     }else{
         document.getElementById("cardN").disabled = false;
         document.getElementById("cardSec").disabled = false;
         document.getElementById("cardDate").disabled = false;
+        document.getElementById("paymentType").value = "Tarjeta de crédito"
     }
    
 };
+
+
 
 document.addEventListener("DOMContentLoaded", function(e){
     const saveInfo = JSON.parse(localStorage.getItem("addToCart"))
     console.log(saveInfo)
     cartPrNew(saveInfo);
+ });
+
+ premium.addEventListener('change', function(){
+    updateTotal()
+ });
+
+ express.addEventListener('change', function(){
+    updateTotal()
+ });
+
+ standard.addEventListener('change', function(){
+    updateTotal()
  });
 
 
