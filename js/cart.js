@@ -48,7 +48,7 @@ let totalValue = 0;
 //     })
 // });
 
-//CARRITO DE COMPRAS (+- NO APARECE LA MONEDA)
+//CARRITO DE COMPRAS (+- NO APARECE LA MONEDA EN EL SUBTOTAL CUANDO SE ACTUALIZA EL INPUT)
 function cartPrNew(new_product){
     let htmlContentToAppend ="";
     for(let i= 0; i<new_product.length;i++){
@@ -58,7 +58,7 @@ function cartPrNew(new_product){
       <td>${new_product[i].name}</td>
       <td>${new_product[i].currency} ${new_product[i].cost}</td>
       <td><input type="number" id="cantidad${i}" onchange="updateSubtotal(${new_product[i].cost}, ${i})" class="form-control" value="1" min="1" max="100" step="1" style="width: 4em;" required></td>
-      <td id="subtotalItem${i}">${new_product[i].currency} `+(cantPr * new_product[i].cost)+` </td>
+      <td id="subtotalItem${i}">${new_product[i].currency} ${(cantPr * new_product[i].cost)} </td>
       <td>
       <button type="button" id="trashCan"><i class="bi-trash" style="color:red"></i></button></td>
     </tr>
@@ -69,18 +69,18 @@ function cartPrNew(new_product){
 };
 
 //SUBTOTAL 
-function updateSubtotal(cost, i){
+function updateSubtotal(cost, i){ //como parámetros el precio y el índice del artículo en el array
         subTotalValue = 0;
         if(i >=0){
-            cantPr = document.getElementById('cantidad' + i).value;
-            let subtotalItem = cost * cantPr;
-            subtotalProducts[i] = subtotalItem;
+            cantPr = document.getElementById('cantidad' + i).value; //cantidad de artículos que surgen del input
+            let subtotalItem = cost * cantPr; //el subtotal es precio * cantidad
+            subtotalProducts[i] = subtotalItem; //el subtotal de un producto se agrega al array que contiene todos los subtotales
             subtotalProducts.forEach(subPr =>{
-                subtotalValue += subPr
+                subtotalValue += subPr //cada subtotal se suma al subtotal general de los productos
             });
-            document.getElementById("subtotalItem" + i).innerHTML =  subtotalItem;
+            document.getElementById("subtotalItem" + i).innerHTML =  subtotalItem; //se muestra el subtotal de cada producto(falta mostrar la moneda)
         }  
-        document.getElementById("productCostText").innerHTML = subtotalValue;
+        document.getElementById("productCostText").innerHTML = subtotalValue; //se muestra el subtotal de todos los productos
 };  
 
 //TOTAL
@@ -88,7 +88,7 @@ function updateTotal(){
     
 }
 
-
+//FUNCIÓN PARA VALIDAR FORMULARIO
 (function () {
     'use strict'
   
@@ -107,14 +107,14 @@ function updateTotal(){
       })
   })()
 
-  //FALTA QUE SEA MÁS DINÁMICO
+  // CHECKBOX DISABLED (FALTA QUE SEA MÁS DINÁMICO)
 function check(){
-    if(document.getElementById("cardRadio").checked){
+    if(document.getElementById("cardRadio").checked){ //si se selecciona tarjeta se desactiva la opción para ingresar una cuenta bancaria
         document.getElementById("bankAccount").disabled = true;
     }else{
         document.getElementById("bankAccount").disabled = false;
     }
-    if(document.getElementById("bankRadio").checked){
+    if(document.getElementById("bankRadio").checked){ //si se selecciona transferencia se desactivan los campos para tarjeta de crédito
         document.getElementById("cardN").disabled = true;
         document.getElementById("cardSec").disabled = true;
         document.getElementById("cardDate").disabled = true;
