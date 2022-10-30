@@ -50,7 +50,7 @@
       </div>
       <h5>Artículos a comprar</h5>
       <br>
-      <form class="needs-validation" novalidate>
+      <form id="carritoForm" class="needs-validation" novalidate>
         <div id="cart">
 
         
@@ -99,14 +99,23 @@
         <div class="custom-control custom-radio">
           <input id="premiumradio" name="shippingType" type="radio" class="custom-control-input" required>
           <label class="custom-control-label" for="premiumradio">Premium 2 a 5 días (15%)</label>
+          <div class="invalid-feedback">
+            Elija un tipo de envío.
+          </div>
         </div>
         <div class="custom-control custom-radio">
           <input id="expressradio" name="shippingType" type="radio" class="custom-control-input" required>
           <label class="custom-control-label" for="expressradio">Express 5 a 8 días (7%)</label>
+          <div class="invalid-feedback">
+            Elija un tipo de envío.
+          </div>
         </div>
         <div class="custom-control custom-radio">
           <input id="standardradio" name="shippingType" type="radio" class="custom-control-input" required>
           <label class="custom-control-label" for="standardradio">Standard 12 a 15 días (5%)</label>
+          <div class="invalid-feedback">
+            Elija un tipo de envío.
+          </div>
         </div>
       </div>
       <h5><i class="bi bi-geo-alt"></i> Dirección de envío</h5>
@@ -198,7 +207,7 @@
         <div class="modal-body">
           <div class="container">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="payments" id="cardRadio" value="option1" onchange="check()">
+              <input class="form-check-input" type="radio" name="payments" id="cardRadio" value="option1">
               <label class="form-check-label" for="cardRadio"><i class="bi bi-credit-card"></i>
                 Tarjeta de crédito 
               </label>
@@ -206,13 +215,13 @@
               <div class="row">
                 <div class="col">
                   <label for="cardN">Número de tarjeta</label>
-                  <input type="text" name="card" class="form-control" id="cardN" placeholder="" required="" value="" minlength="16">
+                  <input type="text" name="card" class="form-control" id="cardN" placeholder="" required value="" minlength="16">
                   <div class="invalid-feedback">
                   </div>
                 </div>
                 <div class="col">
                   <label for="cardSec">Código de seg.</label>
-                  <input type="number" name="card" class="form-control" id="cardSec" placeholder="" required="" value="" minlength="3">
+                  <input type="number" name="card" class="form-control" id="cardSec" placeholder="" required value="" minlength="3">
                   <div class="invalid-feedback">
                     Ingresa un número válido.
                   </div>
@@ -221,7 +230,7 @@
                 <div class="row">
                   <div class="col-md-3">
                     <label for="cardDate">Vencimiento (MM/AA)</label>
-                    <input type="text" name="card" class="form-control" id="cardDate" placeholder="" required="" value="" minlength="5">
+                    <input type="text" name="card" class="form-control" id="cardDate" placeholder="" required value="" minlength="5">
                     <div class="invalid-feedback">
                     </div>
               </div>
@@ -229,7 +238,7 @@
             </div>
             <hr>
             <div class="form-check disabled">
-              <input class="form-check-input" type="radio" name="payments" id="bankRadio" value="option2" onchange="check()">
+              <input class="form-check-input" type="radio" name="payments" id="bankRadio" value="option2">
               <label class="form-check-label" for="bankRadio"> <i class="bi bi-bank"></i>
                 Transferencia bancaria
               </label>
@@ -237,14 +246,14 @@
               <div class="row">
                 <div class="col">
                   <label for="bankAccount">Número de cuenta</label>
-                  <input type="text" name="acc" class="form-control" id="bankAccount" placeholder="" required="" value="" minlength="12">
+                  <input type="text" name="acc" class="form-control" id="bankAccount" placeholder="" required value="" minlength="12">
                   <div class="invalid-feedback">
                   </div>
             </div>
             <br>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-          <input type="submit" class="btn btn-primary" data-dismiss="modal" value="Guardar" id="btnModal">
+          <input type="submit" class="btn btn-primary" data-dismiss="modal" value="Guardar" id="saveModal">
         </div>
       </div>
     </div>

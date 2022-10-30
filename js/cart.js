@@ -16,8 +16,10 @@ let standard = document.getElementById("standardradio");
 let cardNumber = document.getElementById("cardN");
 let cardSecurity = document.getElementById("cardSec");
 let cardDate = document.getElementById("cardDate");
-let saveData = document.getElementById("btnModal");
-let dolarPrice = 41;
+let saveData = document.getElementById("saveModal");
+
+
+
 
 
 
@@ -128,7 +130,7 @@ function updateTotal(){
           if (!form.checkValidity()) {
             event.preventDefault()
             event.stopPropagation()
-            
+
           }
   
           form.classList.add('was-validated')
@@ -136,28 +138,53 @@ function updateTotal(){
       })
   })()
 
-//CHECKBOX DISABLED
-function check(){
-    if(document.getElementById("cardRadio").checked){ //si se selecciona tarjeta se desactiva la opción para ingresar una cuenta bancaria
-        document.getElementById("bankAccount").disabled = true;
+//VALIDAR MEDIOS DE PAGO
+function validCard(){
+    if(cardNumber.value != ""  && cardSecurity.value != ""  && cardSecurity.value != ""){
+    saveData.disabled = false;
     }else{
-        document.getElementById("bankAccount").disabled = false;
-    }
-    if(document.getElementById("bankRadio").checked){ //si se selecciona transferencia se desactivan los campos para tarjeta de crédito
-        document.getElementById("cardN").disabled = true;
-        document.getElementById("cardSec").disabled = true;
-        document.getElementById("cardDate").disabled = true;
-        document.getElementById("paymentType").value = "Transferencia bancaria"
-    }else{
-        document.getElementById("cardN").disabled = false;
-        document.getElementById("cardSec").disabled = false;
-        document.getElementById("cardDate").disabled = false;
-        document.getElementById("paymentType").value = "Tarjeta de crédito"
-    }
-   
+    saveData.disabled = true;
+   }
 };
 
+function validAcc(){
+    if(document.getElementById("bankAccount").value !=""){
+    saveData.disabled = false;
+    }else{
+    saveData.disabled = true;
+   }
+};
 
+//CHECK PAGO (FUNCIONA PERO PRIMERO SE DEBEN INGRESAR LOS DATOS Y LUEGO SELECCIONAR LA OPCIÓN)
+document.getElementById("cardRadio").addEventListener('click', function(){
+    cardNumber.disabled = false;
+    cardSecurity.disabled = false;
+    cardDate.disabled = false;
+    document.getElementById("bankAccount").disabled = true;
+    validCard();
+});
+
+document.getElementById("bankRadio").addEventListener('click', function(){
+    cardNumber.disabled = true;
+    cardSecurity.disabled = true;
+    cardDate.disabled = true;
+    document.getElementById("bankAccount").disabled = false;
+    validAcc();
+});
+
+
+//COMPRAR Y MOSTRAR ALERTA (no funciona correctamente)
+function buySuccess(){
+    if(premium.checked || standard.checked || express.checked){  
+         if(document.getElementById("carritoForm").checkValidity() == true){
+        document.getElementById("main").innerHTML += `
+        <div class="alert alert-success" role="alert">
+        Compra realizada con éxito.
+        </div>
+        `   
+        }      
+}
+};
 
 document.addEventListener("DOMContentLoaded", function(e){
     const saveInfo = JSON.parse(localStorage.getItem("addToCart"))
@@ -177,4 +204,11 @@ document.addEventListener("DOMContentLoaded", function(e){
     updateTotal()
  });
 
+ saveData.addEventListener('click', function(){
+    if(document.getElementById("cardRadio").checked){
+        document.getElementById("paymentType").value = "Tarjeta de crédito"
+    }else{
+        document.getElementById("paymentType").value = "Transferencia bancaria"
+    }
+ });
 
