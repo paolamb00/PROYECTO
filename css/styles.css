@@ -323,7 +323,7 @@ width: 200px;
 
 #paymentType{
   border-color: white;
-  max-width: fit-content;
+  max-width: 300px;
   background-color: white;
 }
  #bankAccount{

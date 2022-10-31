@@ -139,15 +139,15 @@ function updateTotal(){
   })()
 
 //VALIDAR MEDIOS DE PAGO
-function validCard(){
+function validCard(){ //tarjeta de crédito sin campos vacíos
     if(cardNumber.value != ""  && cardSecurity.value != ""  && cardSecurity.value != ""){
-    saveData.disabled = false;
+    saveData.disabled = false; 
     }else{
-    saveData.disabled = true;
+    saveData.disabled = true; //desactiva el botón de guardar
    }
 };
 
-function validAcc(){
+function validAcc(){ //cuenta de banco sin campo vacío
     if(document.getElementById("bankAccount").value !=""){
     saveData.disabled = false;
     }else{
@@ -160,12 +160,12 @@ document.getElementById("cardRadio").addEventListener('click', function(){
     cardNumber.disabled = false;
     cardSecurity.disabled = false;
     cardDate.disabled = false;
-    document.getElementById("bankAccount").disabled = true;
+    document.getElementById("bankAccount").disabled = true; //desactiva el campo para la cuenta de banco
     validCard();
 });
 
 document.getElementById("bankRadio").addEventListener('click', function(){
-    cardNumber.disabled = true;
+    cardNumber.disabled = true; //desactiva campos para tarjeta de crédito
     cardSecurity.disabled = true;
     cardDate.disabled = true;
     document.getElementById("bankAccount").disabled = false;
@@ -178,9 +178,14 @@ function buySuccess(){
     if(premium.checked || standard.checked || express.checked){  
          if(document.getElementById("carritoForm").checkValidity() == true){
         document.getElementById("main").innerHTML += `
-        <div class="alert alert-success" role="alert">
-        Compra realizada con éxito.
-        </div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <h4 class="alert-heading">¡Bien hecho!</h4>
+        <p>Tu compra ha sido realizada con éxito.</p>
+        <hr>
+       <p class="mb-0">Gracias por tu preferencia.</p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+ 
         `   
         }      
 }
@@ -212,3 +217,6 @@ document.addEventListener("DOMContentLoaded", function(e){
     }
  });
 
+document.getElementById("finishShopping").addEventListener('click', function(){
+    buySuccess();
+});
