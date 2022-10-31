@@ -173,7 +173,7 @@ document.getElementById("bankRadio").addEventListener('click', function(){
 });
 
 
-//COMPRAR Y MOSTRAR ALERTA (no funciona correctamente)
+//COMPRAR Y MOSTRAR ALERTA 
 function buySuccess(){
     if(premium.checked || standard.checked || express.checked){  
          if(document.getElementById("carritoForm").checkValidity() == true){
