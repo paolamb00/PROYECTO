@@ -54,14 +54,16 @@
   <div class="container">
     <div class="text-justify p-4">
       <h2>Perfil</h2>
+      <img src="img/img_perfil.png" class="rounded mx-auto d-block" id="default-profile" alt="">  
     </div>
+    <br>
     <form class="needs-validation" id="user-info">
     <div class="row justify-content-md-center">
       <div class="col-md-8 order-md-1">
         
           <div class="row">
             <div class="col-md-6">
-              <label for="firstName" class="form-label">Primer nombre*</label>
+              <label for="firstName" class="form-label">Nombre*</label>
               <input id= "firstName" type="text" class="form-control" name="firstName" required>
               <div class="invalid-feedback">
                 Debe ingresar un nombre.
@@ -72,10 +74,11 @@
               <input id= "secondName"type="text" class="form-control" name="secondName">
             </div>
           </div>
+          <br>
           <div class="mb-3">
             <div class="row">
               <div class="col-md-6">
-                <label for="lastName1" class="form-label">Primer apellido*</label>
+                <label for="lastName1" class="form-label">Apellido*</label>
                 <input id= "lastName1" type="text" class="form-control" name="lastName1" required>
                 <div class="invalid-feedback">
                   Debe ingresar un apellido.
@@ -87,21 +90,27 @@
               </div>
             </div>
           </div>
-
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="userEmail" class="form-label">Email</label>
-              <input id= "userEmail"type="email" class="form-control" name="userEmail" required>
-              <div class="invalid-feedback">
-                Debe ingresar una dirección email.
+          <div class="mb-3">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="userEmail" class="form-label">Email*</label>
+               <input id= "userEmail"type="email" class="form-control" name="userEmail" required>
+                <div class="invalid-feedback">
+                  Debe ingresar un apellido.
+                </div>
               </div>
-              <br>
-              <label for="phoneNumber" class="form-label">Teléfono de contacto*</label>
-              <input id= "phoneNumber"type="tel" class="form-control" name="phoneNumber" required>
-              <div class="invalid-feedback">
-                Debe ingresar un teléfono de contacto.
+              <div class="col-md-6">
+                <label for="image">Foto de perfil</label>
+               <input type="file" class="form-control" id="image" name="image" placeholder="Imagen">
               </div>
             </div>
+          </div>
+          <div class="col-md-6">
+            <label for="phoneNumber" class="form-label">Teléfono de contacto*</label>
+            <input id= "phoneNumber"type="tel" class="form-control" name="phoneNumber" required>
+            <div class="invalid-feedback">
+            Debe ingresar un teléfono de contacto.
+           </div>
           </div>
           <hr>
           <button id= "saveData" class="btn btn-primary btn-lg" type="submit">Guardar cambios</button>

@@ -5,6 +5,8 @@ let lastName2 = document.getElementById("lastName2");
 let userEmail = document.getElementById("userEmail");
 let phoneNumber = document.getElementById("phoneNumber");
 let saveData = document.getElementById("saveData");
+let newProfileImage = document.getElementById("image");
+let defaultImage = document.getElementById("default-profile");
 
 
 let userForm = document.getElementById("user-info"); 
@@ -62,6 +64,8 @@ userForm.addEventListener("submit", function(e){
         
 } );
 
+
+
  function alertSuccess(){ //alert to show when the data is correct
    document.getElementById("main").innerHTML+= `
    <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -85,6 +89,7 @@ function showSavedUser(){
         lastName2.value = profileData.lastName2;
         userEmail.value = profileData.userEmail;
         phoneNumber.value = profileData.phoneNumber;
+        newProfileImage.value = profileData.profileImage;
     }
 
 };
