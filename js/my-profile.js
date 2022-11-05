@@ -6,58 +6,73 @@ let userEmail = document.getElementById("userEmail");
 let phoneNumber = document.getElementById("phoneNumber");
 let saveData = document.getElementById("saveData");
 
-//the "save changes" button saves the data that the user introduced in the inputs,
-//makes it into a string and creates a localstorage item with the values
-saveData.addEventListener('click', function(){ 
-    if(firstName.value != "" &&
-       lastName1.value != "" &&
-       userEmail.value != "" &&
-       phoneNumber.value != ""){
+
+let userForm = document.getElementById("user-info"); 
+userForm.addEventListener("submit", function(e){
+    e.preventDefault(); 
+    e.preventDefault();
+    let dataMissing = false;
+
+    firstName.classList.remove('is-invalid');
+    lastName1.classList.remove('is-invalid');
+    userEmail.classList.remove('is-invalid');
+    phoneNumber.classList.remove('is-invalid');
+
+    //the name, lastname, email and phone number inputs can´t be empty and if they are an alert will be displayed 
+    //where the info is required
+    if (firstName.value === "")
+        {
+            firstName.classList.add('is-invalid');
+            dataMissing = true;
+        }
+
+    if (lastName1.value === "")
+        {
+            lastName1.classList.add('is-invalid');
+            dataMissing = true;
+        }
+
+    if (userEmail.value === "")
+        {
+            userEmail.classList.add('is-invalid');
+            dataMissing = true;
+        }
+
+    if (phoneNumber.value === "")
+        {
+            phoneNumber.classList.add('is-invalid');
+            dataMissing = true;
+        }
+         
+        //if the data is complete the button saves the data that the user introduced in the inputs,
+       //turns it into a string and creates a localstorage item with their values
+    if(!dataMissing){ 
         const newProfile = {
-        firstName: firstName.value,
-        secondName: secondName.value,
-        lastName1: lastName1.value,
-        lastName2: lastName2.value,
-        userEmail: userEmail.value,
-        phoneNumber: phoneNumber.value,
-    }
-    let newUserProfile = JSON.stringify(newProfile);
-    localStorage.setItem("userData", newUserProfile); 
-    alertSuccess();
-    }else{
-        if(firstName.value === "" ||
-    lastName1.value === "" ||
-    userEmail.value === "" ||
-    phoneNumber.value === ""){
-        alertError();
-    }
-}
-           
-});
+            firstName: firstName.value,
+            secondName: secondName.value,
+            lastName1: lastName1.value,
+            lastName2: lastName2.value,
+            userEmail: userEmail.value,
+            phoneNumber: phoneNumber.value,
+        }
+        let newUserProfile = JSON.stringify(newProfile);
+        localStorage.setItem("userData", newUserProfile); 
+        alertSuccess();
+    }    
+        
+} );
 
-function alertSuccess(){ //alert to show when the data is correct
-document.getElementById("main").innerHTML+= `
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-<h4 class="alert-heading">¡Bien hecho!</h4>
-<p>Tu información ha sido guardada correctamente.</p>
-<hr>
-<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-
-`   
+ function alertSuccess(){ //alert to show when the data is correct
+   document.getElementById("main").innerHTML+= `
+   <div class="alert alert-success alert-dismissible fade show" role="alert">
+   <h4 class="alert-heading">¡Bien hecho!</h4>
+   <p>Tu información ha sido guardada correctamente.</p>
+   <hr>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+ `   
 };
 
-function alertError(){ //alert to show when the data is incomplete
-    document.getElementById("main").innerHTML+= `
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <h4 class="alert-heading">Oops...</h4>
-    <p>Debes completar los campos requeridos.</p>
-    <hr>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    
-    `   
-};
 
 //If the user is already created and saved in the localstorage the info will be displayed
 function showSavedUser(){
