@@ -17,6 +17,7 @@ let cardNumber = document.getElementById("cardN");
 let cardSecurity = document.getElementById("cardSec");
 let cardDate = document.getElementById("cardDate");
 let saveData = document.getElementById("saveModal");
+let dollarPrice = 40;
 
 
 
@@ -68,13 +69,16 @@ function cartPrNew(new_product){
     for(let i= 0; i < new_product.length;i++){
         const { name, currency, cost } = new_product[i];
         let productValue = cost;
+        if (currency === "UYU") {
+			productValue = cost / dollarPrice; //se convierte el precio en pesos uruguayos a dólares
+		}
         htmlContentToAppend+=`
     <tr">
       <td><img src="${new_product[i].images[0]}" id="prTh"></td>
       <td>`+ name + `</td>
-      <td>`+ currency + ` `+ productValue + `</td>
+      <td>`+ currency + ` `+ cost + `</td>
       <td><input type="number" id="cantidad${i}" onchange="updateSubtotal(`+ productValue + `, ${i})" class="form-control" value="1" min="1" style="width: 4em;" required></td>
-      <td id="subtotalItem${i}"><b>`+ currency + ` `+(cantPr * productValue)+` </td>
+      <td id="subtotalItem${i}"> USD `+(cantPr * productValue)+` </td>
       <td>
       <button type="button" id="trashCan"><i class="bi-trash" style="color:red"></i></button></td>
     </tr>
@@ -95,9 +99,9 @@ function updateSubtotal(cost, i){ //como parámetros el precio y el índice del 
             subtotalProducts.forEach(subPr =>{
                 subTotalValue += subPr //cada subtotal se suma al subtotal general de los productos
             });
-            document.getElementById("subtotalItem" + i).innerHTML = subtotalItem; //se muestra el subtotal de cada producto(falta mostrar la moneda)
+            document.getElementById("subtotalItem" + i).innerHTML = "USD " + subtotalItem; //se muestra el subtotal de cada producto(falta mostrar la moneda)
         }  
-        document.getElementById("productCostText").innerHTML = Math.round(subTotalValue); //se muestra el subtotal de todos los productos
+        document.getElementById("productCostText").innerHTML = "USD " + Math.round(subTotalValue); //se muestra el subtotal de todos los productos
         updateTotal();
 };  
 
@@ -114,9 +118,10 @@ function updateTotal(){
         deliveryValue = subTotalValue * 0.07;
     }
     totalValue = Math.round(deliveryValue) + Math.round(subTotalValue); //el total se modifica en base al subtotal y el envío
-    document.getElementById("comissionText").innerHTML =  Math.round(deliveryValue);
-    document.getElementById("totalCostText").innerHTML =  Math.round(totalValue);
+    document.getElementById("comissionText").innerHTML = "USD " + Math.round(deliveryValue);
+    document.getElementById("totalCostText").innerHTML = "USD " + Math.round(totalValue);
 };
+
 
 //FUNCIÓN PARA VALIDAR FORMULARIO
 (function () {

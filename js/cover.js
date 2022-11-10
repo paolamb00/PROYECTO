@@ -23,7 +23,7 @@ function mostrarUsuarios(){
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
         <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-        <li"><a class="dropdown-item" href="index.html">Cerrar sesión</a></li>
+        <li"><a class="dropdown-item" href="index.html" onclick="deleteUser()">Cerrar sesión</a></li>
   </ul>
 </div>
        `  
@@ -50,8 +50,9 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 //ELIMINAR USUARIO AUTENTICADO AL CERRAR CESIÓN
-
-
+function deleteUser(){
+  localStorage.removeItem("Email");
+};
 mostrarUsuarios();
 
 

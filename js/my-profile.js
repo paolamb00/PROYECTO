@@ -65,10 +65,10 @@ userForm.addEventListener("submit", function(e){
 } );
  //function to change profile picture 
  //función para cambiar foto de perfil
+ document.getElementById("file").addEventListener('change', function(event){
+    profilePic.src = URL.createObjectURL(event.target.files[0]);
+ });
 
-var loadFile = function (event) {
-     profilePic.src = URL.createObjectURL(event.target.files[0]);
- };
 
 
  function alertSuccess(){ //alert to show when the data is correct / alerta para mostrar cuando la info esté correcta
