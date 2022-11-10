@@ -330,8 +330,8 @@ width: 200px;
   width: 200px;
  }
 
- #default-profile{
-  float: right;
-  max-width: 100px;
-  max-height: 100px;
+ #output{
+  border-radius: 50%;
+  float: left;
+  width: 100px;
  }

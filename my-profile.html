@@ -52,9 +52,11 @@
   </nav>
   <main id="main">
   <div class="container">
-    <div class="text-justify p-4">
+    <div class="text-center p-4">
       <h2>Perfil</h2>
-      <img src="img/img_perfil.png" class="rounded mx-auto d-block" id="default-profile" alt="">  
+      <div class="profile-pic">
+        <img src="img/img_perfil.png" id="output"/>
+      </div>  
     </div>
     <br>
     <form class="needs-validation" id="user-info">
@@ -100,8 +102,9 @@
                 </div>
               </div>
               <div class="col-md-6">
-                <label for="image">Foto de perfil</label>
-               <input type="file" class="form-control" id="image" name="image" placeholder="Imagen">
+                <label class="-label" for="file">Foto de perfil</label>
+                <span class="glyphicon glyphicon-camera"></span>
+               <input type="file" class="form-control" id="file" name="image" onchange="loadFile(event)" placeholder="Imagen">
               </div>
             </div>
           </div>

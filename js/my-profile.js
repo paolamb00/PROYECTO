@@ -5,8 +5,8 @@ let lastName2 = document.getElementById("lastName2");
 let userEmail = document.getElementById("userEmail");
 let phoneNumber = document.getElementById("phoneNumber");
 let saveData = document.getElementById("saveData");
-let newProfileImage = document.getElementById("image");
-let defaultImage = document.getElementById("default-profile");
+let profilePic = document.getElementById("output");
+
 
 
 let userForm = document.getElementById("user-info"); 
@@ -63,10 +63,15 @@ userForm.addEventListener("submit", function(e){
     }    
         
 } );
+ //function to change profile picture 
+ //función para cambiar foto de perfil
+
+var loadFile = function (event) {
+     profilePic.src = URL.createObjectURL(event.target.files[0]);
+ };
 
 
-
- function alertSuccess(){ //alert to show when the data is correct
+ function alertSuccess(){ //alert to show when the data is correct / alerta para mostrar cuando la info esté correcta
    document.getElementById("main").innerHTML+= `
    <div class="alert alert-success alert-dismissible fade show" role="alert">
    <h4 class="alert-heading">¡Bien hecho!</h4>
@@ -79,6 +84,7 @@ userForm.addEventListener("submit", function(e){
 
 
 //If the user is already created and saved in the localstorage the info will be displayed
+//si el usuario ya está creado y almacenado en el localStorage se mostrará la información respectiva
 function showSavedUser(){
     let userData = localStorage.getItem("userData");
     if(userData !== null){
@@ -89,14 +95,13 @@ function showSavedUser(){
         lastName2.value = profileData.lastName2;
         userEmail.value = profileData.userEmail;
         phoneNumber.value = profileData.phoneNumber;
-        newProfileImage.value = profileData.profileImage;
     }
 
 };
 
 
 document.addEventListener("DOMContentLoaded", function (e) {
-    userEmail.value = localStorage.getItem("Email"); //when user access their profile the email is the one used to log in
+    userEmail.value = localStorage.getItem("Email"); //cuando el usuario accede a su perfil el email que se muestra es el que se utilizó para ingresar
     showSavedUser();
 });
 

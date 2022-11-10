@@ -1,7 +1,21 @@
 function mostrarUsuarios(){
     let htmlContentToAppend ="";
         let correo1 =  localStorage.getItem("Email");
-        htmlContentToAppend +=`
+        if(localStorage.getItem("Email") == null){
+            htmlContentToAppend +=`
+            <div class="dropdown">
+             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+             `+correo1+`
+             </button>
+           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+           <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+           <li"><a class="dropdown-item" href="index.html">Cerrar sesión</a></li>
+     </ul>
+   </div>
+          `
+            
+        }else{
+           htmlContentToAppend +=`
          <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           `+correo1+`
@@ -12,8 +26,9 @@ function mostrarUsuarios(){
         <li"><a class="dropdown-item" href="index.html">Cerrar sesión</a></li>
   </ul>
 </div>
-       `
-         
+       `  
+        }
+           
          document.getElementById("usuario").innerHTML = htmlContentToAppend; 
     };
 
