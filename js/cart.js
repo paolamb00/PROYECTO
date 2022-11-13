@@ -17,6 +17,8 @@ let cardNumber = document.getElementById("cardN");
 let cardSecurity = document.getElementById("cardSec");
 let cardDate = document.getElementById("cardDate");
 let saveData = document.getElementById("saveModal");
+let cardPay = document.getElementById("cardRadio");
+let bankPay = document.getElementById("bankRadio");
 let dollarPrice = 40;
 
 
@@ -160,7 +162,7 @@ function validAcc(){ //cuenta de banco sin campo vacío
    }
 };
 
-//CHECK PAGO (FUNCIONA PERO PRIMERO SE DEBEN INGRESAR LOS DATOS Y LUEGO SELECCIONAR LA OPCIÓN)
+//CHECK PAGO 
 document.getElementById("cardRadio").addEventListener('click', function(){
     cardNumber.disabled = false;
     cardSecurity.disabled = false;
@@ -181,7 +183,8 @@ document.getElementById("bankRadio").addEventListener('click', function(){
 //COMPRAR Y MOSTRAR ALERTA 
 function buySuccess(){
     if(premium.checked || standard.checked || express.checked){  
-         if(document.getElementById("carritoForm").checkValidity() == true){
+        if(bankPay.checked || cardPay.checked){
+           if(document.getElementById("carritoForm").checkValidity() == true){
         document.getElementById("main").innerHTML += `
         <div class="alert alert-success alert-dismissible fade show" role="alert">
         <h4 class="alert-heading">¡Bien hecho!</h4>
@@ -191,7 +194,8 @@ function buySuccess(){
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
        </div>
  
-        `   
+        `    
+        }     
         }      
 }
 };

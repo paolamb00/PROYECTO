@@ -174,18 +174,81 @@
           <hr class="mb-4">
           <h4 class="mb-3"><i class="bi bi-wallet2"></i> Forma de pago</h4>
           <div class="row">
-            <input name="payment" class="form-control" id="paymentType" value="Selecciona un método de pago" required >
+            <input name="payment" class="form-control" id="paymentType" placeholder="No ha seleccionado" value="" required >
             <button type="button" id="btnModal" class="m-1 btn btn-link" data-bs-toggle="modal"
-              data-bs-target="#paymentsModal">Seleccionar</button>
+              data-bs-target="#paymentsModal">Seleccionar</button> 
               <div class="invalid-feedback">
                 Debe seleccionar una forma de pago.
-              </div>
+              </div>  
           </div>
           <div>
 
           </div>
           <br>
           <button class="btn btn-primary btn-lg" type="submit" id="finishShopping">Finalizar compra</button>
+          <div class="modal fade" tabindex="-1" role="dialog" id="paymentsModal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Forma de pago</h5>
+                </div>
+                <div class="modal-body">
+                  <div class="container">
+                    <div class="form-check">
+                      <input class="form-control-input" type="radio" name="payments" id="cardRadio" value="option1">
+                      <label class="form-control-label" for="cardRadio"><i class="bi bi-credit-card"></i>
+                        Tarjeta de crédito 
+                      </label>
+                    <hr>
+                      <div class="row">
+                        <div class="col">
+                          <label for="cardN">Número de tarjeta</label>
+                          <input type="text" name="card" class="form-control" id="cardN" placeholder=""value="" minlength="16" required >
+                          <div class="invalid-feedback">
+                            Ingresa una tarjeta válida
+                          </div>
+                        </div>
+                        <div class="col">
+                          <label for="cardSec">Código de seg.</label>
+                          <input type="number" name="card" class="form-control" id="cardSec" placeholder=""  value="" minlength="3" required>
+                          <div class="invalid-feedback">
+                            Ingresa un número válido.
+                          </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-3">
+                            <label for="cardDate">Vencimiento (MM/AA)</label>
+                            <input type="text" name="card" class="form-control" id="cardDate" placeholder=""  value="" minlength="5" required>
+                            <div class="invalid-feedback">
+                              Ingresa una fecha válida.
+                            </div>
+                      </div>
+                    </div>
+                    </div>
+                    <hr>
+                    <div class="form-check disabled">
+                      <input class="form-control-input" type="radio" name="payments" id="bankRadio" value="option2">
+                      <label class="form-control-label" for="bankRadio"> <i class="bi bi-bank"></i>
+                        Transferencia bancaria
+                      </label>
+                    <hr>
+                      <div class="row">
+                        <div class="col">
+                          <label for="bankAccount">Número de cuenta</label>
+                          <input type="text" name="acc" class="form-control" id="bankAccount" placeholder="" required value="" minlength="12">
+                          <div class="invalid-feedback">
+                            Ingresa un número de cuenta válido.
+                          </div>
+                    </div>
+                    <br>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                  <input type="button" class="btn btn-primary" data-dismiss="modal" value="Guardar" id="saveModal">
+                </div>
+              </div>
+            </div>
+          </div>
   </form>        
   </main>
   <footer class="text-muted">
@@ -198,66 +261,6 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
-  <div class="modal fade" tabindex="-1" role="dialog" id="paymentsModal">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Forma de pago</h5>
-        </div>
-        <div class="modal-body">
-          <div class="container">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="payments" id="cardRadio" value="option1">
-              <label class="form-check-label" for="cardRadio"><i class="bi bi-credit-card"></i>
-                Tarjeta de crédito 
-              </label>
-            <hr>
-              <div class="row">
-                <div class="col">
-                  <label for="cardN">Número de tarjeta</label>
-                  <input type="text" name="card" class="form-control" id="cardN" placeholder="" required value="" minlength="16">
-                  <div class="invalid-feedback">
-                  </div>
-                </div>
-                <div class="col">
-                  <label for="cardSec">Código de seg.</label>
-                  <input type="number" name="card" class="form-control" id="cardSec" placeholder="" required value="" minlength="3">
-                  <div class="invalid-feedback">
-                    Ingresa un número válido.
-                  </div>
-                </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-3">
-                    <label for="cardDate">Vencimiento (MM/AA)</label>
-                    <input type="text" name="card" class="form-control" id="cardDate" placeholder="" required value="" minlength="5">
-                    <div class="invalid-feedback">
-                    </div>
-              </div>
-            </div>
-            </div>
-            <hr>
-            <div class="form-check disabled">
-              <input class="form-check-input" type="radio" name="payments" id="bankRadio" value="option2">
-              <label class="form-check-label" for="bankRadio"> <i class="bi bi-bank"></i>
-                Transferencia bancaria
-              </label>
-            <hr>
-              <div class="row">
-                <div class="col">
-                  <label for="bankAccount">Número de cuenta</label>
-                  <input type="text" name="acc" class="form-control" id="bankAccount" placeholder="" required value="" minlength="12">
-                  <div class="invalid-feedback">
-                  </div>
-            </div>
-            <br>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-          <input type="submit" class="btn btn-primary" data-dismiss="modal" value="Guardar" id="saveModal">
-        </div>
-      </div>
-    </div>
-  </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
