@@ -67,9 +67,9 @@ userForm.addEventListener("submit", function(e){
 //función para cambiar foto de perfil
 document.getElementById("file").addEventListener('change', function(){
     const reader = new FileReader();
-    reader.addEventListener('load', () => { //cuando el usuario sube una imagen esta:
-        localStorage.setItem("user-image", reader.result); //se guarda en el localstorage
-        profilePic.src = reader.result; //modifica la imagen default de perfil
+    reader.addEventListener('load', () => { //cuando el usuario sube una imagen esta: /when the user uploads an image
+        localStorage.setItem("user-image", reader.result); //se guarda en el localstorage /it gets saved into the localstorage
+        profilePic.src = reader.result; //modifica la imagen default de perfil /the default image gets modified
     })
     reader.readAsDataURL(this.files[0]);
  });
