@@ -18,12 +18,12 @@ function mostrarUsuarios(){
            htmlContentToAppend +=`
          <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          `+correo1+`
+          <i class="bi bi-person-circle"></i> `+correo1+`
           </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
-        <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-        <li"><a class="dropdown-item" href="index.html" onclick="deleteUser()">Cerrar sesión</a></li>
+        <li><a class="dropdown-item" href="cart.html"><i class="bi bi-cart4"></i> Mi carrito</a></li>
+        <li><a class="dropdown-item" href="my-profile.html"><i class="bi bi-person-badge"></i> Mi perfil</a></li>
+        <li"><a class="dropdown-item" href="index.html" onclick="deleteUser()"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
   </ul>
 </div>
        `  

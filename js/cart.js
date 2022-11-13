@@ -79,7 +79,7 @@ function cartPrNew(new_product){
       <td><img src="${new_product[i].images[0]}" id="prTh"></td>
       <td>`+ name + `</td>
       <td>`+ currency + ` `+ cost + `</td>
-      <td><input type="number" id="cantidad${i}" onchange="updateSubtotal(`+ productValue + `, ${i})" class="form-control" value="1" min="1" style="width: 4em;" required></td>
+      <td><input type="number" id="cantidad${i}" onclick="updateSubtotal(`+ productValue + `, ${i})" class="form-control" value="1" min="1" style="width: 4em;" required></td>
       <td id="subtotalItem${i}"> USD `+(cantPr * productValue)+` </td>
       <td>
       <button type="button" id="trashCan"><i class="bi-trash" style="color:red"></i></button></td>

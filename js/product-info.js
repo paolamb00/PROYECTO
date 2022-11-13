@@ -18,16 +18,16 @@ function showProductInfo(inf_list){
         <br>
         <div class="prData">
         <hr>
-        <p id="volver">
+        <p id="volver"><i class="bi bi-arrow-left"></i>
         <a href="products.html">Volver al listado</a>
         </p>
-        <h4>Precio:</h4>
+        <h4><i class="bi bi-cash-stack"></i> Precio:</h4>
         <p>`+inf_list.currency+` `+inf_list.cost+`</p>
-        <h4>Descripción:</h4>
+        <h4><i class="bi bi-info-circle"></i> Descripción:</h4>
         <p>`+inf_list.description+`</p>
-        <h4>Categoría:</h4>
+        <h4><i class="bi bi-tags"></i> Categoría:</h4>
         <p>`+inf_list.category+`</p>
-        <h4>Cantidad de vendidos:</h4>
+        <h4><i class="bi bi-truck"></i> Cantidad de vendidos:</h4>
         <p>`+inf_list.soldCount+`</p>
         </div>
         
