@@ -64,10 +64,16 @@ userForm.addEventListener("submit", function(e){
         
 } );
  //function to change profile picture 
- //función para cambiar foto de perfil
- document.getElementById("file").addEventListener('change', function(event){
-    profilePic.src = URL.createObjectURL(event.target.files[0]);
+//función para cambiar foto de perfil
+document.getElementById("file").addEventListener('change', function(){
+    const reader = new FileReader();
+    reader.addEventListener('load', () => { //cuando el usuario sube una imagen esta:
+        localStorage.setItem("user-image", reader.result); //se guarda en el localstorage
+        profilePic.src = reader.result; //modifica la imagen default de perfil
+    })
+    reader.readAsDataURL(this.files[0]);
  });
+
 
 
 
@@ -102,6 +108,10 @@ function showSavedUser(){
 
 document.addEventListener("DOMContentLoaded", function (e) {
     userEmail.value = localStorage.getItem("Email"); //cuando el usuario accede a su perfil el email que se muestra es el que se utilizó para ingresar
+    const usersImage = localStorage.getItem("user-image"); //cuando se carga la página se muestra la imagen de perfil guardada en localstorage
+    if(usersImage){
+        profilePic.setAttribute("src", usersImage);
+    }
     showSavedUser();
 });
 
