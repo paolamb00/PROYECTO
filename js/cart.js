@@ -21,13 +21,6 @@ let cardPay = document.getElementById("cardRadio");
 let bankPay = document.getElementById("bankRadio");
 let dollarPrice = 40;
 
-
-
-
-
-
-
-
 // //FUNCIÓN PARA MOSTRAR PRODUCTO ORIGINAL
 // function showCart(cart_data){
 //     for(let i = 0; i < cart_data.length; i++){
@@ -65,7 +58,7 @@ let dollarPrice = 40;
 //     })
 // });
 
-//CARRITO DE COMPRAS (+- NO APARECE LA MONEDA EN EL SUBTOTAL CUANDO SE ACTUALIZA EL INPUT)
+//CARRITO DE COMPRAS ()
 function cartPrNew(new_product){
     let htmlContentToAppend ="";
     for(let i= 0; i < new_product.length;i++){
@@ -90,6 +83,9 @@ function cartPrNew(new_product){
     updateSubtotal(productValue, index);
     updateTotal();
 };
+
+
+
 
 //SUBTOTAL 
 function updateSubtotal(cost, i){ //como parámetros el precio y el índice del artículo en el array
