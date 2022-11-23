@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function(e){
     document.getElementById("alert-danger").classList.remove("show");
     guardarUser();
     window.location.href = 'cover.html';
-    ingresoExitoso();
     mostrarUser();
 
   }
@@ -46,9 +45,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 });
 })
 
-function ingresoExitoso(){
-  alert("Inicio de sesión exitoso")
-}
 
 
 

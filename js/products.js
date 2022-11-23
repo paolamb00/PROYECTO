@@ -3,22 +3,22 @@ const ORDER_DESC_BY_COST = "2-1";
 const ORDER_BY_PROD_SOLDCOUNT = "Cant.";
 let currentProductsArray = [];
 let currentSortCriteria = undefined;
-let products_content = PRODUCTS_URL + localStorage.getItem("catID") + ".json"
+let products_content = PRODUCTS_URL + localStorage.getItem("catID") + ".json" //forma con la que se accede a los productos de cada categoría según el id
 let catName = {101:"Autos", 102:"Juguetes", 103:"Muebles", 104:"Herramientas", 105:"Computadoras", 106:"Vestimenta",
-107:"Electrodomésticos", 108:"Deporte", 109:"Celulares"};
+107:"Electrodomésticos", 108:"Deporte", 109:"Celulares"}; //nombres de categorías de acuerdo a su id
 let product_list = "";
 let priceMin = document.getElementById("FilterPriceMin");
 let priceMax = document.getElementById("FilterPriceMax");
 let search = document.getElementById("searchBar");
 
 //MOSTRAR PRODUCTOS EN HTML
-
+//esta función muestra los productos (con sus características) a partir del JSON de productos
 function showProductList(list){
     let htmlContentToAppend = "";
     for(let i = 0; i < list.length; i++){
         let product =  list[i]
         htmlContentToAppend += `
-        <div onclick="redirecting(`+product.id+`)" class="list-group-item list-group-item-action cursor-active">
+        <div onclick="redirecting(`+product.id+`)" class="list-group-item list-group-item-action cursor-active" id="productDetail">
         <div class="row">
                 <div class="col-3">
                      <img src="`+product.image+`" alt="product" class="img-thumbnail">
@@ -42,7 +42,8 @@ function showProductList(list){
 }
 
 //MOSTRAR NOMBRE DE CATEGORÍA ACTUAL
-
+//esta función muestra el nombre de la categoría a la que pertenecen los productos de acuerdo a lo seleccionado por
+//el usuario
 function catNames(){
     document.getElementById("catNom").innerHTML = "Verás aquí todos los productos de la categoría " + catName[localStorage.getItem("catID")]
 }
@@ -50,7 +51,6 @@ function catNames(){
 
 
 //FILTROS
-
 function filter(){
     let filterResults = product_list; 
 
@@ -65,60 +65,54 @@ function filter(){
     }
 
 //BOTONES DE FILTRO
-
+//esta función es la que filtra los productos por precio (asc y desc) como también por cantidad de productos vendidos
 function sortProducts(criteria, array){
-    let arraySorted = [];
+    let result = [];
     if (criteria === ORDER_ASC_BY_COST){
-        arraySorted = array.sort(function(a, b) {
-            return a.cost - b.cost
-        });
-    }else if (criteria === ORDER_DESC_BY_COST){
-        arraySorted = array.sort(function(a, b) {
+        result = array.sort(function(a, b) {
             return b.cost - a.cost
         });
+    }else if (criteria === ORDER_DESC_BY_COST){
+        result = array.sort(function(a, b) {
+            return a.cost - b.cost
+        });
     }else if (criteria === ORDER_BY_PROD_SOLDCOUNT){
-        arraySorted = array.sort(function(a, b) {
+        result = array.sort(function(a, b) {
             return  b.soldCount - a.soldCount
         });
     }
-    showProductList(arraySorted);
+    console.log(result)
+    showProductList(result);
 }
 
-
-function sortAndShowProducts(sortCriteria, productsArray){
-    currentSortCriteria = sortCriteria;
-
-    if(productsArray != undefined){
-        currentProductsArray = productsArray;
-    }
-
-    currentProductsArray = sortProducts(currentSortCriteria, currentProductsArray);
-
-    showProductList();
-}
-
+//cada botón para filtrar lo hace de acuerdo a su criterio previamente asignado
+//y muestra la lista de productos ordenada conforme a este
 document.getElementById("sortPriceDesc").addEventListener('click', function(){
-    sortAndShowProducts(ORDER_DESC_BY_COST);
+    let order = sortProducts(ORDER_DESC_BY_COST, product_list);
+    showProductList(order);
 });
 
 document.getElementById("sortPriceAsc").addEventListener('click', function(){
-    sortAndShowProducts(ORDER_ASC_BY_COST);
+    let order = sortProducts(ORDER_ASC_BY_COST, product_list);
+    showProductList(order);
 });
 
 document.getElementById("sortBySoldCount").addEventListener('click', function(){
-    sortAndShowProducts(ORDER_BY_PROD_SOLDCOUNT);
+    let order = sortProducts(ORDER_BY_PROD_SOLDCOUNT, product_list);
+    showProductList(order);
 });
 
 
 
 //LIMPIAR FILTRO
-
+//el botón de limpiar vacía los campos de filtros y la barra de búsqueda
+//y vuelve a mostrar la lista inicial
 limpiar.addEventListener("click",function(){
     document.getElementById("FilterPriceMin").value = "";
     document.getElementById("FilterPriceMax").value = "";
     document.getElementById("searchBar").value = "";
     
-    showProductList();
+    showProductList(product_list);
 })
 
 

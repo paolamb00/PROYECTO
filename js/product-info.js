@@ -40,11 +40,11 @@ function showProductInfo(inf_list){
 function productImg(){
     let htmlContentToAppend = "";
     for(let i = 0; i < info_list.images.length; i++){
-     htmlContentToAppend += `   
-         <img src="`+info_list.images[i]+`">                      
+     htmlContentToAppend += `  
+         <img src="`+info_list.images[i]+`">                        
     `
   }
-      document.getElementById("imgProd").innerHTML = htmlContentToAppend
+      document.getElementById("imgProd").innerHTML = htmlContentToAppend;
 };
      
 

@@ -13,6 +13,8 @@ nav a {
   text-decoration: none;
 }
 
+
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
@@ -335,3 +337,13 @@ width: 200px;
   float: left;
   width: 100px;
  }
+
+ #productDetail{
+  transition: background-color .5s ease-in-out;
+ }
+
+ #productDetail:hover{
+  background-color: lightgray;
+ }
+
+
