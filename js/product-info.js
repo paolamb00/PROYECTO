@@ -91,7 +91,7 @@ function relatedProducts(){
     document.getElementById("relatedProd").innerHTML = htmlContentToAppend
 }
 
-//AGREGAR COMENTARIO (estrellas en proceso)
+//AGREGAR COMENTARIO
 
 document.getElementById("btnComment").addEventListener('click', function(){
     let correo1 =  localStorage.getItem("Email");
