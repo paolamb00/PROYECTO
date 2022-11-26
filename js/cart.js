@@ -65,7 +65,7 @@ function cartPrNew(new_product){
         const { name, currency, cost } = new_product[i];
         let productValue = cost;
         if (currency === "UYU") {
-			productValue = cost / dollarPrice; //se convierte el precio en pesos uruguayos a dólares
+			productValue = Math.round(cost / dollarPrice); //se convierte el precio en pesos uruguayos a dólares
 		}
         htmlContentToAppend+=`
     <tr">
@@ -92,7 +92,7 @@ function updateSubtotal(cost, i){ //como parámetros el precio y el índice del 
         subTotalValue = 0;
         if(i >=0){
             cantPr = document.getElementById('cantidad' + i).value; //cantidad de artículos que surgen del input
-            let subtotalItem = cost * cantPr; //el subtotal es precio * cantidad
+            let subtotalItem = Math.round(cost * cantPr); //el subtotal es precio * cantidad
             subtotalProducts[i] = subtotalItem; //el subtotal de un producto se agrega al array que contiene todos los subtotales
             subtotalProducts.forEach(subPr =>{
                 subTotalValue += subPr //cada subtotal se suma al subtotal general de los productos
