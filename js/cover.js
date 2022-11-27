@@ -8,8 +8,9 @@ function mostrarUsuarios(){
              `+correo1+`
              </button>
            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-           <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
-           <li"><a class="dropdown-item" href="index.html">Cerrar sesión</a></li>
+           <li><a class="dropdown-item" href="cart.html"><i class="bi bi-cart4"></i> Mi carrito</a></li>
+           <li><a class="dropdown-item disabled"><i class="bi bi-person-badge"></i> Mi perfil</a></li>
+           <li"><a class="dropdown-item" href="index.html"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
      </ul>
    </div>
           `

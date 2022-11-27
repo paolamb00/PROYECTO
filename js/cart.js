@@ -20,6 +20,7 @@ let saveData = document.getElementById("saveModal");
 let cardPay = document.getElementById("cardRadio");
 let bankPay = document.getElementById("bankRadio");
 let dollarPrice = 40;
+let carritoPr = [];
 
 // //FUNCIÓN PARA MOSTRAR PRODUCTO ORIGINAL
 // function showCart(cart_data){
@@ -68,14 +69,14 @@ function cartPrNew(new_product){
 			productValue = Math.round(cost / dollarPrice); //se convierte el precio en pesos uruguayos a dólares
 		}
         htmlContentToAppend+=`
-    <tr">
+    <tr id="productID(${new_product[i].id})">
       <td><img src="${new_product[i].images[0]}" id="prTh"></td>
       <td>`+ name + `</td>
       <td>`+ currency + ` `+ cost + `</td>
       <td><input type="number" id="cantidad${i}" onclick="updateSubtotal(`+ productValue + `, ${i})" class="form-control" value="1" min="1" style="width: 4em;" required></td>
       <td id="subtotalItem${i}"> USD `+(cantPr * productValue)+` </td>
       <td>
-      <button type="button" id="trashCan"><i class="bi-trash" style="color:red"></i></button></td>
+      <button type="button" id="trashCan${i}" onclick="deleteProduct(${i})"><i class="bi-trash" style="color:red"></i></button></td>
     </tr>
     `
     }
@@ -119,6 +120,13 @@ function updateTotal(){
     document.getElementById("comissionText").innerHTML = "USD " + Math.round(deliveryValue);
     document.getElementById("totalCostText").innerHTML = "USD " + Math.round(totalValue);
 };
+
+//FUNCIÓN PARA BORRAR PRODUCTO (en desarrollo)
+function deleteProduct(){
+     
+    
+};
+
 
 
 //FUNCIÓN PARA VALIDAR FORMULARIO
@@ -200,6 +208,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     const saveInfo = JSON.parse(localStorage.getItem("addToCart"))
     console.log(saveInfo)
     cartPrNew(saveInfo);
+    carritoPr = saveInfo;
  });
 
  premium.addEventListener('change', function(){
