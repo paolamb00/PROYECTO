@@ -4,6 +4,10 @@ let info_list ="";
 const COMMENTS_API_INFO = "https://japceibal.github.io/emercado-api/products_comments/";
 let product_comments = COMMENTS_API_INFO + localStorage.getItem("product") + ".json"
 let comments_list = "";
+let commentsArray = [];
+let sortCriteria = undefined;
+const ORDER_ASC_BY_RATING = "1-2";
+const ORDER_DESC_BY_RATING = "2-1";
 
 //MOSTRAR INFO DEL PRODUCTO
 
@@ -72,6 +76,32 @@ function userComment(comment_list){
     
     document.getElementById("comments").innerHTML = htmlContentToAppend
 }
+
+//FUNCIÓN PARA FILTRAR COMENTARIOS (en desarrollo)
+function filterComments(criteria, array){
+    let result = [];
+    if (criteria === ORDER_DESC_BY_RATING){
+        result = array.sort(function(a, b) {
+            return b.score - a.score
+        });
+    }else if (criteria === ORDER_ASC_BY_RATING){
+        result = array.sort(function(a, b) {
+            return a.score - b.score
+        });
+    }
+    console.log(result);
+    userComment(result);
+};
+
+document.getElementById("sortBest").addEventListener('click', function(){
+let order = filterComments(ORDER_DESC_BY_RATING, comments_list);
+userComment(order);
+});
+
+document.getElementById("sortWorst").addEventListener('click', function(){
+    let order = filterComments(ORDER_ASC_BY_RATING, comments_list);
+    userComment(order);
+});
 
 //PRODUCTOS RELACIONADOS
 
