@@ -6,6 +6,9 @@ let userEmail = document.getElementById("userEmail");
 let phoneNumber = document.getElementById("phoneNumber");
 let saveData = document.getElementById("saveData");
 let profilePic = document.getElementById("output");
+let nameLastN = document.getElementById("nameLastN");
+let userEmailContact = document.getElementById("userEmailContact");
+let contactNumber = document.getElementById("contactNumber");
 
 
 
@@ -73,8 +76,6 @@ document.getElementById("file").addEventListener('change', function(){
     })
     reader.readAsDataURL(this.files[0]);
  });
-
-
 
 
  function alertSuccess(){ //alert to show when the data is correct / alerta para mostrar cuando la info esté correcta

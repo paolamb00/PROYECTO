@@ -25,15 +25,35 @@ function showProductInfo(inf_list){
         <p id="volver"><i class="bi bi-arrow-left"></i>
         <a href="products.html">Volver al listado</a>
         </p>
+        </div>
+        <br>
+        <br>
+        <div class="list-group-item-action cursor-active">
+        <ul>
         <h4><i class="bi bi-cash-stack"></i> Precio:</h4>
         <p>`+inf_list.currency+` `+inf_list.cost+`</p>
+        </ul>
+        </div>
+        <div class="list-group-item-action cursor-active">
+        <ul>
         <h4><i class="bi bi-info-circle"></i> Descripción:</h4>
         <p>`+inf_list.description+`</p>
+        </ul>
+        </div>
+        <div class="list-group-item-action cursor-active">
+        <ul>
         <h4><i class="bi bi-tags"></i> Categoría:</h4>
         <p>`+inf_list.category+`</p>
+        </ul>
+        </div>
+        <div class="list-group-item-action cursor-active">
+        <ul>
         <h4><i class="bi bi-truck"></i> Cantidad de vendidos:</h4>
         <p>`+inf_list.soldCount+`</p>
+        </ul>
         </div>
+        
+        
         
         `
      document.getElementById("infoProd").innerHTML = htmlContentToAppend;

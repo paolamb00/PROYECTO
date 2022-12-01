@@ -47,8 +47,11 @@
           <li class="nav-item">
             <a class="nav-link" href="cover.html">Página principal</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" href="categories.html">Categorías</a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" href="categories.html">Todas</a></li>
+            </ul>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
@@ -63,9 +66,11 @@
   <div class="container">
     <div class="text-center p-4" id="perfil">
       <h2><i class="bi bi-person-lines-fill"></i> Perfil</h2>
+      <div>
       <div class="profile-pic">
         <img src="img/img_perfil.png" id="output"/>
-      </div>  
+      </div> 
+    </div>
     </div>
     <br>
     <form class="needs-validation" id="user-info" novalidate>
