@@ -73,10 +73,10 @@ function cartPrNew(new_product){
       <td><img src="${new_product[i].images[0]}" id="prTh"></td>
       <td>`+ name + `</td>
       <td>`+ currency + ` `+ cost + `</td>
-      <td><input type="number" id="cantidad${i}" onchange="updateSubtotal(`+ productValue + `, ${i})" class="form-control" value="1" min="1" style="width: 4em;" required></td>
-      <td id="subtotalItem${i}"> USD `+(cantPr * productValue)+` </td>
+      <td><input type="number" id="cantidad`+ i + `" onchange="updateSubtotal(`+ productValue + `, `+ i + `)" class="form-control" value="1" min="1" style="width: 4em;" required></td>
+      <td id="subtotalItem`+ i + `"> USD `+(cantPr * productValue)+` </td>
       <td>
-      <button type="button" id="trashCan${i}" onclick="deleteProduct(${i})"><i class="bi-trash" style="color:red"></i></button></td>
+      <button type="button" id="trashCan"><i class="bi-trash" style="color:red"></i></button></td>
     </tr>
     `
     }
@@ -98,7 +98,7 @@ function updateSubtotal(cost, i){ //como parámetros el precio y el índice del 
             subtotalProducts.forEach(subPr =>{
                 subTotalValue += subPr //cada subtotal se suma al subtotal general de los productos
             });
-            document.getElementById("subtotalItem" + i).innerHTML = "USD " + subtotalItem; //se muestra el subtotal de cada producto(falta mostrar la moneda)
+            document.getElementById("subtotalItem" + i).innerHTML = "USD " + subtotalItem; //se muestra el subtotal de cada producto
         }  
         document.getElementById("productCostText").innerHTML = "USD " + Math.round(subTotalValue); //se muestra el subtotal de todos los productos
         updateTotal();
@@ -121,11 +121,7 @@ function updateTotal(){
     document.getElementById("totalCostText").innerHTML = "USD " + Math.round(totalValue);
 };
 
-//FUNCIÓN PARA BORRAR PRODUCTO (en desarrollo)
-function deleteProduct(){
-     
-    
-};
+
 
 
 

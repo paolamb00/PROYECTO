@@ -97,7 +97,7 @@ function userComment(comment_list){
     document.getElementById("comments").innerHTML = htmlContentToAppend
 }
 
-//FUNCIÓN PARA FILTRAR COMENTARIOS (en desarrollo)
+//FUNCIÓN PARA FILTRAR COMENTARIOS
 function filterComments(criteria, array){
     let result = [];
     if (criteria === ORDER_DESC_BY_RATING){

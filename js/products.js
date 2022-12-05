@@ -88,18 +88,18 @@ function sortProducts(criteria, array){
 //cada botón para filtrar lo hace de acuerdo a su criterio previamente asignado
 //y muestra la lista de productos ordenada conforme a este
 document.getElementById("sortPriceDesc").addEventListener('click', function(){
-    let order = sortProducts(ORDER_DESC_BY_COST, product_list);
-    showProductList(order);
+    let filtered = sortProducts(ORDER_DESC_BY_COST, product_list);
+    showProductList(filtered);
 });
 
 document.getElementById("sortPriceAsc").addEventListener('click', function(){
-    let order = sortProducts(ORDER_ASC_BY_COST, product_list);
-    showProductList(order);
+    let filtered = sortProducts(ORDER_ASC_BY_COST, product_list);
+    showProductList(filtered);
 });
 
 document.getElementById("sortBySoldCount").addEventListener('click', function(){
-    let order = sortProducts(ORDER_BY_PROD_SOLDCOUNT, product_list);
-    showProductList(order);
+    let filtered = sortProducts(ORDER_BY_PROD_SOLDCOUNT, product_list);
+    showProductList(filtered);
 });
 
 
